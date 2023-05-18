@@ -6,23 +6,33 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
- //unordered_set <ListNode*> nodes;
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        unordered_set<ListNode*>set;
-        ListNode*curr=head;
-
-        while(curr!=nullptr)
+        ListNode*slow=head;
+        ListNode*fast=head;
+        bool cycle=false;
+        while(fast!=nullptr && fast->next!=nullptr)
         {
-            if(set.find(curr) !=set.end()) return curr;
-            else
+            slow=slow->next;
+            fast=fast->next->next;
+            if(fast==slow) 
             {
-                set.insert(curr);
-                curr=curr->next;
-
+                cycle=true;
+                break;
             }
         }
-        return NULL;
+        if(cycle==false) return nullptr;
+        fast=head;
+        while(slow!=fast)
+        {
+                slow=slow->next;
+                fast=fast->next;  
+        }
+return fast;
     }
 };
+            
+       
+
+        
