@@ -22,10 +22,8 @@ if (root==nullptr)
 else
 {
     inorder(root->left,answer);
-   // answer.push_back(root->left);
     answer.push_back(root->val);
     inorder(root->right,answer);
-    //answer.push_back(root->right);
 }
 }
     vector<int> inorderTraversal(TreeNode* root)
