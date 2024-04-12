@@ -1,9 +1,7 @@
 class Solution {
 public:
     int trap(vector<int>& h) {
-
-
-                int count=0;
+               int count=0;
             int l=0,r=h.size()-1;
             int lmax=INT_MIN;
             int rmax=INT_MIN;
