@@ -2,18 +2,18 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        unordered_map<int,int>m1;
-        for(int num:nums)
+        int sum=0;
+        int j=0;
+        for(int i=0;i<nums.size();i++)
         {
-            m1[num]++;
+            if(nums[i]>nums[j]) 
+            {
+                j++;
+                nums[j]=nums[i];
+                sum++;
+            }
+            
         }
-        nums.clear();
-        
-        for(auto n:m1)
-        {
-            nums.push_back(n.first);
-        }
-        sort(nums.begin(),nums.end());
-        return nums.size();
+        return sum+1;
     }
 };
